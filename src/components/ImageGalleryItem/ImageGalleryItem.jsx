@@ -1,17 +1,10 @@
-import { Component } from 'react';
 import css from './ImageGalleryItem.module.css';
 
-export class ImageGalleryItem extends Component {
-    state = {
-
-    };
-
-    render() {
-    const { pictures, isLoading } = this.props;
+export const ImageGalleryItem =props=> {
     return (
       <>
-        {pictures &&
-          pictures.map(picture => {
+        {props.pictures &&
+          props.pictures.map(picture => {
             return (
               <li key={picture.id} className={css.ImageGalleryItem}>
                 <img
@@ -22,12 +15,11 @@ export class ImageGalleryItem extends Component {
               </li>
             );
           })}
-        {pictures.length === 0 && this.props.request && isLoading===false &&(
+        {props.pictures.length === 0 && props.request && props.isLoading===false &&(
           <p
             className={css.p}
-          >{`за запитом "${this.props.request}" нічого не знайдено!`}</p>
+          >{`за запитом "${props.request}" нічого не знайдено!`}</p>
         )}
       </>
     );
   }
-}
